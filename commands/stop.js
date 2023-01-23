@@ -11,6 +11,7 @@ module.exports.run = async (client, message, args) => {
     
             return message.channel.send({embeds: [embed]});
         }
+
         let embed = new EmbedBuilder()
                 .setTitle(`Ta Parei!`)
                 .setColor("#eb1616")
@@ -21,4 +22,5 @@ module.exports.run = async (client, message, args) => {
             message.channel.send({ embeds: [embed] });
 
         queue.stop()
+        client.distube.voices.leave(message);
 };

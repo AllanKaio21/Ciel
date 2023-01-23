@@ -4,6 +4,9 @@ module.exports.run = async (client) => {
   const time = 5000;
   client.on("ready", () => {
     client.user.setStatus('available')
+    client.user.setActivity(`${config.prefix}help !`, {
+      type: `LISTENING`,
+    });
     let types = [
       `LISTENING`,
       `STREAMING`,

@@ -8,5 +8,5 @@ module.exports.run = async (client, message, args) => {
         .setColor("#eb1616")
         .setDescription(`Espero poder tocar mais depois!`)
 
-        message.channel.send({embeds: [embed]});
+    message.channel.send({embeds: [embed]});
 };

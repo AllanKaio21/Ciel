@@ -26,7 +26,6 @@ module.exports.run = async (client, message, args) => {
         fs.writeFile('./config/guild/prefix.json', objW2, 'utf-8',() => {});
         let embed = new EmbedBuilder()
           .setColor('#eb1616')
-          .setAuthor(`${message.guild.name}`, `https://cdn.discordapp.com/icons/${message.guild.id}/${message.guild.icon}.png`)
           .setTitle('Alteração de Prefix da Guilda!')
           .setDescription(`O prefixo mudou para ${obj2.prefix[indice]}`)
 
@@ -45,12 +44,12 @@ module.exports.run = async (client, message, args) => {
         const obj = JSON.parse(data);
         //if id!=obj.id
         for(let i in obj.id){
-          if(obj.id[i]===message.guild.id){
+          if(obj.id[i]===message.guildId){
             savePrefix(prefix3,i);
             return;
           }
         }
-        obj.id.push(message.guild.id);
+        obj.id.push(message.guildId);
         const objW = JSON.stringify(obj);
         fs.writeFile('./config/guild/guild.json', objW, 'utf-8',() => {});
         //Get prefix and save prefix

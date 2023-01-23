@@ -1,5 +1,6 @@
-const {EmbedBuilder} = require("discord.js");
+const {EmbedBuilder} = require("discord.js")
 const config = require("../config/config.json")
+
 module.exports.run = async (client) => {
   client.emotes = config.emoji
 client.distube
@@ -55,14 +56,7 @@ client.distube
     else console.error(e)
   })
   .on('empty', channel => {
-    const embed = new EmbedBuilder()
-      .setColor('#eb1616')
-      .setTitle('Saindo!')
-      .setDescription('Fui abandonado... Então adeus 😓')
-      .setTimestamp()
-      .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
-
-    channel.send({ embeds: [embed] });
+    console.log("Desconectado de uma call!")
   })
   .on('searchNoResult', (message, query) =>
     message.channel.send(`${client.emotes.error} | Não achei isso não...`)

@@ -38,4 +38,4 @@ direct.run(client);
 player.run(client);
 
 // Initialize
-client.login("Token Bot");
+client.login("TOKEN");
