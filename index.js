@@ -17,8 +17,8 @@ client.distube = new DisTube(client, {
       parallel: true,
       emitEventsAfterFetching: false,
       api: {
-        clientId: "324c10912b974d7dbb2fbe679c943067",
-        clientSecret: "48743e1cf926403f8484bd6855203c5f",
+        clientId: "client_id",
+        clientSecret: "client_secret",
         topTracksCountry: "VN",
       },
     }),
