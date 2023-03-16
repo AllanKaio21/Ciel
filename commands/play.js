@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args) => {
             return message.channel.send({embeds: [embed]});
         }
         if(args[0].substring(-5, 32) ==='https://www.youtube.com/playlist'){
-            let embed = new MessageEmbed()
+            let embed = new EmbedBuilder()
             .setTitle(`Este comando não aceita playlist!`)
             .setColor("#eb1616")
             .setDescription(`Use ${config.prefix}playlist [playlist]`)

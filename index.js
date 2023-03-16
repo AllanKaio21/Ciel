@@ -14,7 +14,13 @@ client.distube = new DisTube(client, {
   emitAddListWhenCreatingQueue: false,
   plugins: [
     new SpotifyPlugin({
-      emitEventsAfterFetching: true
+      parallel: true,
+      emitEventsAfterFetching: false,
+      api: {
+        clientId: "324c10912b974d7dbb2fbe679c943067",
+        clientSecret: "48743e1cf926403f8484bd6855203c5f",
+        topTracksCountry: "VN",
+      },
     }),
     new SoundCloudPlugin(),
     new YtDlpPlugin()
@@ -24,7 +30,7 @@ client.distube = new DisTube(client, {
 // Import files
 const ready = require("./events/ready.js");
 const message = require('./events/message.js');
-const direct = require('./events/direct.js');
+const direct = require('./events/direct.js')
 const player = require('./events/player.js');
 
 // Init Bot

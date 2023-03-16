@@ -10,7 +10,7 @@ module.exports.run = async (client) => {
     setInterval(function(){  
       getPrefix();
     }, 1000);
-    const prefixId = (indice,id) => {
+    const prefixId = (indice, id) => {
       //Get prefix and save prefix
       fs.readFile('./config/guild/prefix.json', 'utf-8', (err2, data2) => {
         if (err2) {
@@ -22,13 +22,14 @@ module.exports.run = async (client) => {
         }
       });
     }
+
     const getPrefix = () =>{
       fs.readFile('./config/guild/guild.json', 'utf-8', (err, data) => {
         if (err) {
             throw err;
         }else{
           const obj = JSON.parse(data);
-          //if id!=obj.id
+          // if id != obj.id
           for(let i in obj.id){
             prefixId(i,obj.id[i]);
           } 
@@ -57,7 +58,7 @@ module.exports.run = async (client) => {
         },1000);   
       }else{
         let tm = cooldown.getTime(message.guild.id);
-        if(tm===undefined){
+        if(tm === undefined){
           tm = timer/1000;
         }
         return message.reply(`Espere **${tm}s** para usar outro comando!`);
