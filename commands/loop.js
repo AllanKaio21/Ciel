@@ -1,22 +1,29 @@
+const discord = require('discord.js');
 const {EmbedBuilder} = require("discord.js")
 
-module.exports.run = async (client, message, args) => {
-    const queue = client.distube.getQueue(message)
-    if(!queue){
-        let embed = new EmbedBuilder()
-        .setTitle(`Que musica?`)
-        .setDescription('Ta perdido... use o help!')
-        .setColor("#eb1616")
-        .setDescription(`Acho que não tem musica...`)
+module.exports = {
+    name: 'loop',
+    description: 'Repetir música tocada!',
+    type: discord.ApplicationCommandType.ChatInput,
 
-        return message.channel.send({embeds: [embed]});
+    run: async (client, interaction) => {
+        const queue = client.distube.getQueue(interaction)
+        if(!queue){
+            let embed = new EmbedBuilder()
+            .setTitle(`Que musica?`)
+            .setDescription('Ta perdido... use o help!')
+            .setColor("#eb1616")
+            .setDescription(`Acho que não tem musica...`)
+
+            return interaction.channel.send({embeds: [embed]});
+        }
+        const embed = new EmbedBuilder()
+            .setTitle(`Loop!`)
+            .setDescription("Essa é boaaa!!!")
+            .setColor("#eb1616")
+
+        interaction.channel.send({embeds: [embed]});
+
+        mode = queue.setRepeatMode(1)
     }
-    const embed = new EmbedBuilder()
-        .setTitle(`Loop!`)
-        .setDescription("Essa é boaaa!!!")
-        .setColor("#eb1616")
-
-    message.channel.send({embeds: [embed]});
-
-    mode = queue.setRepeatMode(1)
-};
+}

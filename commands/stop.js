@@ -1,7 +1,13 @@
 const {EmbedBuilder} = require("discord.js");
+const discord = require('discord.js');
 
-module.exports.run = async (client, message, args) => {
-        const queue = client.distube.getQueue(message)
+module.exports = {
+    name: 'stop',
+    description: 'Parar reprodução!',
+    type: discord.ApplicationCommandType.ChatInput,
+
+    run: async (client, interaction) => {
+        const queue = client.distube.getQueue(interaction)
         if(!queue){
             let embed = new EmbedBuilder()
             .setTitle(`Que musica?`)
@@ -9,7 +15,7 @@ module.exports.run = async (client, message, args) => {
             .setColor("#eb1616")
             .setDescription(`Acho que não tem musica...`)
     
-            return message.channel.send({embeds: [embed]});
+            return interaction.channel.send({embeds: [embed]});
         }
 
         let embed = new EmbedBuilder()
@@ -19,8 +25,9 @@ module.exports.run = async (client, message, args) => {
                 .setTimestamp()
                 .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
     
-            message.channel.send({ embeds: [embed] });
+            interaction.channel.send({ embeds: [embed] });
 
         queue.stop()
-        client.distube.voices.leave(message);
-};
+        client.distube.voices.leave(interaction);
+    }
+}

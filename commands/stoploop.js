@@ -1,22 +1,29 @@
-const {EmbedBuilder} = require("discord.js")
+const {EmbedBuilder} = require("discord.js");
+const discord = require('discord.js');
 
-module.exports.run = async (client, message, args) => {
-    const queue = client.distube.getQueue(message)
-    if(!queue){
-        let embed = new EmbedBuilder()
-        .setTitle(`Que musica?`)
-        .setDescription('Ta perdido... use o help!')
-        .setColor("#eb1616")
-        .setDescription(`Acho que não tem musica...`)
+module.exports = {
+    name: 'stoploop',
+    description: 'Parar loop de uma música!',
+    type: discord.ApplicationCommandType.ChatInput,
 
-        return message.channel.send({embeds: [embed]});
+    run: async (client, interaction) => {
+        const queue = client.distube.getQueue(interaction)
+        if(!queue){
+            let embed = new EmbedBuilder()
+            .setTitle(`Que musica?`)
+            .setDescription('Ta perdido... use o help!')
+            .setColor("#eb1616")
+            .setDescription(`Acho que não tem musica...`)
+
+            return interaction.channel.send({embeds: [embed]});
+        }
+        const embed = new EmbedBuilder()
+            .setTitle(`Loop finalizado!`)
+            .setColor("#eb1616")
+            .setDescription(`Eu também ja estava enjoado...`)
+
+        interaction.channel.send({embeds: [embed]});
+
+        mode = queue.setRepeatMode(0)
     }
-    const embed = new EmbedBuilder()
-        .setTitle(`Loop finalizado!`)
-        .setColor("#eb1616")
-        .setDescription(`Eu também ja estava enjoado...`)
-
-    message.channel.send({embeds: [embed]});
-
-    mode = queue.setRepeatMode(0)
-};
+}

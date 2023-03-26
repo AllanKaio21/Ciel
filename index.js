@@ -1,11 +1,16 @@
 const { DisTube } = require('distube')
 const Discord = require('discord.js')
+const { TOKEN, stfId, stfSecret} = require('./config/config.json')
 const client = new Discord.Client({
-  intents: [65167]
-})
+  intents: [ 65217 ]
+});
 const { SpotifyPlugin } = require('@distube/spotify')
 const { SoundCloudPlugin } = require('@distube/soundcloud')
 const { YtDlpPlugin } = require('@distube/yt-dlp')
+
+client.slashCommands = new Discord.Collection()
+
+require('./handler')(client)
 
 client.distube = new DisTube(client, {
   leaveOnStop: false,
@@ -17,8 +22,8 @@ client.distube = new DisTube(client, {
       parallel: true,
       emitEventsAfterFetching: false,
       api: {
-        clientId: "client_id",
-        clientSecret: "client_secret",
+        clientId: stfId,
+        clientSecret: stfSecret,
         topTracksCountry: "VN",
       },
     }),
@@ -29,19 +34,19 @@ client.distube = new DisTube(client, {
 
 // Import files
 const ready = require("./events/ready.js");
-const message = require('./events/message.js');
-const direct = require('./events/direct.js')
+const message = require('./events/interation.js');
 const player = require('./events/player.js');
+const deploy = require('./events/deploy-commands.js')
 
 // Init Bot
 ready.run(client);
 
 // Commands 
 message.run(client);
-direct.run(client);
+deploy.run(client);
 
 // Music
 player.run(client);
 
 // Initialize
-client.login("TOKEN");
+client.login(TOKEN);

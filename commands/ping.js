@@ -1,9 +1,16 @@
-module.exports.run = async (client, message, args) => {
-    const m = await message.channel.send('ping?');
+const discord = require('discord.js');
+
+module.exports = {
+  name: 'ping',
+  description: 'Verifique sua latência!',
+  type: discord.ApplicationCommandType.ChatInput,
+  run: async (client, interaction, args) => {
+    const m = await interaction.channel.send('ping?');
   
     m.edit(`🏓 **| Pong!**\nLatência do Server: **${m.createdTimestamp -
-        message.createdTimestamp}ms.**\nLatência da API: **${Math.round(
+        interaction.createdTimestamp}ms.**\nLatência da API: **${Math.round(
         client.ws.ping
       )}ms**`
     );
-  };
+  }
+}

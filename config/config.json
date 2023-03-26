@@ -1,5 +1,9 @@
 {
-    "prefix":"*",
+    "prefix":"/",
+    "TOKEN": "",
+    "clientId": "",
+    "stfId": "",
+    "stfSecret": "",
     "emoji": {
         "play": "▶️",
         "stop": "⏹️",

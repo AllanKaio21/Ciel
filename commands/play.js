@@ -1,27 +1,34 @@
-const {EmbedBuilder} = require("discord.js");
-const config = require('../config/config.json');
+const discord = require('discord.js');
+const { EmbedBuilder } = require("discord.js");
 
-module.exports.run = async (client, message, args) => {
-        if(args[0]===undefined) return message.channel.send(`Use ${config.prefix}play [Nome Musica]`);
-        if(!message.member.voice.channel){
+module.exports = {
+    name: 'play',
+    description: 'Tocar musicas',
+    type: discord.ApplicationCommandType.ChatInput,
+    options: [
+        {
+            type: 3,
+            name: 'música',
+            description: 'Digite o nome de uma música ou link.',
+            required: true
+        }
+    ],
+
+    run: async (client, interaction) => {
+        const args = interaction.options.getString('música');
+        
+        if(!interaction.member.voice.channel){
             const embed = new EmbedBuilder()
             .setTitle(`Entre em um canal de voz!!`)
             .setThumbnail('https://3.bp.blogspot.com/-Ht6GDhPLkXM/WrfC848CXUI/AAAAAAAASeU/ElCzKraOlREPSOQcuTJ71wS4qICb0smOwCLcBGAs/s640/Kyoko.gif')
             .setColor("#eb1616")
             .setDescription(`Ué quer que eu toque para quem?`)
-            return message.channel.send({embeds: [embed]});
+            return interaction.channel.send({embeds: [embed]});
         }
-        if(args[0].substring(-5, 32) ==='https://www.youtube.com/playlist'){
-            let embed = new EmbedBuilder()
-            .setTitle(`Este comando não aceita playlist!`)
-            .setColor("#eb1616")
-            .setDescription(`Use ${config.prefix}playlist [playlist]`)
-            return message.channel.send({embeds: [embed]});
-        }
-        client.distube.play(message.member.voice.channel, args.toString(), {
-            member: message.member,
-            textChannel: message.channel,
-            message
+        client.distube.play(interaction.member.voice.channel, args.toString(), {
+            member: interaction.member,
+            textChannel: interaction.channel,
+            interaction
         })
-        
-    };
+    }
+}

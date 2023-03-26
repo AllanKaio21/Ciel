@@ -1,20 +1,35 @@
-const {EmbedBuilder} = require("discord.js")
+const {EmbedBuilder} = require("discord.js");
+const discord = require('discord.js');
 
-module.exports.run = async (client, message, args) => {
-  const queue = client.distube.getQueue(message)
-  if(!queue){
-    const embed = new EmbedBuilder()
-      .setTitle(`Não Tem Nada Rolando!`)
-      .setColor("#eb1616")
-      .setDescription(`Não estou tocando nada para isso...`)
+module.exports = {
+  name: 'volume',
+  description: 'Controlar nível de volume do bot!',
+  type: discord.ApplicationCommandType.ChatInput,
+  options: [
+    {
+      type: 4,
+      name: 'nível',
+      description: 'Digite um valor entre 0-100.',
+      required: true, 
+    }
+  ],
 
-      return message.channel.send({embeds: [embed]});
-  }
+  run: async (client, interaction) => {
+    const args = interaction.options.getInteger('nível');
+    const queue = client.distube.getQueue(interaction)
+    if(!queue){
+      const embed = new EmbedBuilder()
+        .setTitle(`Não Tem Nada Rolando!`)
+        .setColor("#eb1616")
+        .setDescription(`Não estou tocando nada para isso...`)
 
-  if(isNaN(args[0])) return message.reply("Isto não é uma valor valido!");
-  const vol = parseInt(args[0])
-  if(args[0] > 100||args[0] < 0) return message.reply("Volume precisa ser entre 0 e 100!");
-  queue.setVolume(vol)
+        return interaction.channel.send({embeds: [embed]});
+    }
+
+    if(isNaN(args[0])) return interaction.reply("Isto não é uma valor valido!");
+    const vol = parseInt(args[0])
+    if(args[0] > 100||args[0] < 0) return interaction.reply("Volume precisa ser entre 0 e 100!");
+    queue.setVolume(vol)
     let volume = '|';
     const embed = new EmbedBuilder()
       .setTitle(`Volume!`)
@@ -26,5 +41,6 @@ module.exports.run = async (client, message, args) => {
       .setTimestamp()
       .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
       
-    message.channel.send({embeds: [embed]});
-};
+    interaction.channel.send({embeds: [embed]});
+  }
+}
