@@ -15,14 +15,14 @@ module.exports = {
             .setColor("#eb1616")
             .setDescription(`Acho que não tem musica...`)
 
-            return interaction.channel.send({embeds: [embed]});
+            return await interaction.reply({embeds: [embed]});
         }
         const embed = new EmbedBuilder()
             .setTitle(`Loop!`)
             .setDescription("Essa é boaaa!!!")
             .setColor("#eb1616")
 
-        interaction.channel.send({embeds: [embed]});
+        await interaction.reply({embeds: [embed]});
 
         mode = queue.setRepeatMode(1)
     }

@@ -8,13 +8,13 @@ module.exports = {
 
     run: async (client, interaction) => {
 
-        if(!interaction.member.permissions.has('KICK_MEMBERS')) return interaction.channel.send('Não vou sair!');
+        if(!interaction.member.permissions.has('KICK_MEMBERS')) return await interaction.reply('Não vou sair!');
         client.distube.voices.leave(interaction)
         const embed = new EmbedBuilder()
             .setTitle(`Pronto vazei!`)
             .setColor("#eb1616")
             .setDescription(`Espero poder tocar mais depois!`)
 
-        interaction.channel.send({embeds: [embed]});
+        await interaction.reply({embeds: [embed]});
     }
 }

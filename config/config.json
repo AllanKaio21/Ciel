@@ -2,8 +2,8 @@
     "prefix":"/",
     "TOKEN": "",
     "clientId": "",
-    "stfId": "",
-    "stfSecret": "",
+    "spyId": "",
+    "spySecret": "",
     "emoji": {
         "play": "▶️",
         "stop": "⏹️",

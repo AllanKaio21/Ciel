@@ -1,6 +1,6 @@
 const { DisTube } = require('distube')
 const Discord = require('discord.js')
-const { TOKEN, stfId, stfSecret} = require('./config/config.json')
+const { TOKEN, spyId, spySecret} = require('./config/config.json')
 const client = new Discord.Client({
   intents: [ 65217 ]
 });
@@ -22,8 +22,8 @@ client.distube = new DisTube(client, {
       parallel: true,
       emitEventsAfterFetching: false,
       api: {
-        clientId: stfId,
-        clientSecret: stfSecret,
+        clientId: spyId,
+        clientSecret: spySecret,
         topTracksCountry: "VN",
       },
     }),

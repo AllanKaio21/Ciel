@@ -25,10 +25,10 @@ module.exports = {
       .setThumbnail('https://c.tenor.com/QDq1cZI2VtsAAAAd/itachi-sasuke.gif')
       .setDescription(`Você é fraco... lhe falta permisão!`)
 
-      return interaction.channel.send({ embeds: [embed] })
+      return await interaction.reply({ embeds: [embed] })
     };
     if(args.length < 10){
-      return interaction.channel.send('Mensagem precisa ter pelo menos dez caracters!');
+      return await interaction.reply('Mensagem precisa ter pelo menos dez caracters!');
     }
     var data = new Date();
     var dia = String(data.getDate()).padStart(2, '0');
@@ -37,7 +37,7 @@ module.exports = {
     dataAtual = '\n**Data:** ' + dia + '/' + mes + '/' + ano + '\n';
     autor = `**Author:** ${interaction.member.user.username}#${interaction.member.user.discriminator}\n`;
     text = `**Bug:** ${args} ${dataAtual}`;
-    fs.readFile('./config/guild/bugs.json', 'utf-8', (err, data) => {
+    fs.readFile('./config/guild/bugs.json', 'utf-8', async (err, data) => {
         if (err) {
             throw err;
         }else{
@@ -51,7 +51,7 @@ module.exports = {
             .setThumbnail('https://calculojuridico.com.br/assets/images/2021_04_14_contratacao_escritorios.gif')
             .setDescription(`Um bug? affs mais trabalho...`)
 
-            return interaction.channel.send({ embeds: [embed] })
+            return await interaction.reply({ embeds: [embed] })
         }
     });
   }

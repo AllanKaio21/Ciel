@@ -1,31 +1,29 @@
+const { ActivityType } = require('discord.js');
 const config = require('../config/config.json');
 
 module.exports.run = async (client) => {
   const time = 5000;
   client.on("ready", () => {
-    client.user.setStatus('available')
-    client.user.setActivity(`${config.prefix}help !`, {
-      type: `LISTENING`,
-    });
     let types = [
-      `LISTENING`,
-      `STREAMING`,
-      `PLAYING`,
-      `STREAMING`,
-      `LISTENING`
+      ActivityType.Listening,
+      ActivityType.Competing,
+      ActivityType.Playing,
+      ActivityType.Listening
     ]
-    let activities = [
+    let activitie = [
       `${config.prefix}help !`,
-      `Valorant na Twitch!`,
+      `Rocket League`,
       `Pedra em ${client.guilds.cache.size} servidores!`,
-      `Rocket League na Twitch!`,
       `uma musica! 🎵🎶`
     ],
     i = 0;
-    setInterval(() => {client.user.setActivity(`${activities[i++]}`, {
-      type: `${types[i-1]}`,
-      url: 'https://www.twitch.tv/monstercat'
-    });if(i > activities.length-1) i = 0}, time*60);
-    console.log("Estou Online!");
+    setInterval(() => {
+      client.user.setPresence({
+        activities: [{ name: `${activitie[i]}`, type: types[i++] }],
+        status: 'dnd'
+      });
+      if(i > activitie.length-1) i = 0;
+    }, time*60);
+    console.log(`Estou Online em ${client.guilds.cache.size} Servidores!`);
   });
 };

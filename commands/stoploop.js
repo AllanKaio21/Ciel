@@ -22,7 +22,7 @@ module.exports = {
             .setColor("#eb1616")
             .setDescription(`Eu também ja estava enjoado...`)
 
-        interaction.channel.send({embeds: [embed]});
+        await interaction.reply({embeds: [embed]});
 
         mode = queue.setRepeatMode(0)
     }

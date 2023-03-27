@@ -15,9 +15,9 @@ module.exports = {
             .setColor("#eb1616")
             .setDescription(`Acho que não tem musica...`)
 
-            return interaction.channel.send({embeds: [embed]});
-        }
-        if (queue.paused) {
+            await interaction.reply({embeds: [embed]});
+
+        }else if (queue.paused) {
             queue.resume()
             const embed = new EmbedBuilder()
                 .setColor('#eb1616')
@@ -26,7 +26,8 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
 
-            interaction.channel.send({ embeds: [embed] });
+            await interaction.reply({ embeds: [embed] });
+
         } else {
             const embed = new EmbedBuilder()
                 .setColor('#eb1616')
@@ -35,7 +36,8 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
 
-            interaction.channel.send({ embeds: [embed] });
+            await interaction.reply({ embeds: [embed] });
+
         }
     }
 }

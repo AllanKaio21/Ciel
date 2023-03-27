@@ -45,7 +45,7 @@ module.exports = {
         .setTimestamp()
         .setFooter({ text: 'Espero ter ajudado!', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
 
-        return interaction.channel.send({ embeds: [embed] });
+        return await interaction.reply({ embeds: [embed] });
     }else if(args === 2){
       let embed = new EmbedBuilder()
         .setColor('#eb1616')
@@ -62,8 +62,8 @@ module.exports = {
         .setTimestamp()
         .setFooter({ text: 'Espero ter ajudado!', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
 
-        return interaction.channel.send({ embeds: [embed] });
+        return await interaction.reply({ embeds: [embed] });
     }
-    return interaction.reply(`Use ${config.prefix}help [1-2]`);
+    return await interaction.reply(`Use ${config.prefix}help [1-2]`);
   }
 }

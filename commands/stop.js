@@ -15,17 +15,17 @@ module.exports = {
             .setColor("#eb1616")
             .setDescription(`Acho que não tem musica...`)
     
-            return interaction.channel.send({embeds: [embed]});
+            return await interaction.reply({embeds: [embed]});
         }
 
         let embed = new EmbedBuilder()
-                .setTitle(`Ta Parei!`)
-                .setColor("#eb1616")
-                .setDescription(`Poxa parar porque?`)
-                .setTimestamp()
-                .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
-    
-            interaction.channel.send({ embeds: [embed] });
+            .setTitle(`Ta Parei!`)
+            .setColor("#eb1616")
+            .setDescription(`Poxa parar porque?`)
+            .setTimestamp()
+            .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
+
+        await interaction.reply({ embeds: [embed] });
 
         queue.stop()
         client.distube.voices.leave(interaction);

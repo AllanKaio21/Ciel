@@ -17,15 +17,16 @@ module.exports = {
             .setColor("#eb1616")
             .setDescription(`Assim não da neh!`)
 
-            return interaction.channel.send({embeds: [embed]});
-        }
-        if(!queue){
+            return await interaction.reply({embeds: [embed]});
+
+        } else if(!queue){
             const embed = new EmbedBuilder()
             .setTitle(`Pular o que?`)
             .setColor("#eb1616")
             .setDescription(`Não tem musica para pular ue!`)
 
-            return interaction.channel.send({embeds: [embed]});
+            return await interaction.reply({embeds: [embed]});
+            
         }
 
         try {
@@ -37,7 +38,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
 
-            interaction.channel.send({ embeds: [embed] });
+            await interaction.reply({ embeds: [embed] });
         } catch (e) {
             const embed = new EmbedBuilder()
                 .setColor('#eb1616')
@@ -46,7 +47,7 @@ module.exports = {
                 .setTimestamp()
                 .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
 
-            interaction.channel.send({ embeds: [embed] });
+            await interaction.reply({ embeds: [embed] });
 
             queue.stop()
         }

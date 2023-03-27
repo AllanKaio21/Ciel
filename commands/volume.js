@@ -23,7 +23,7 @@ module.exports = {
         .setColor("#eb1616")
         .setDescription(`Não estou tocando nada para isso...`)
 
-        return interaction.channel.send({embeds: [embed]});
+      return await interaction.reply({embeds: [embed]});
     }
 
     if(isNaN(args[0])) return interaction.reply("Isto não é uma valor valido!");
@@ -41,6 +41,6 @@ module.exports = {
       .setTimestamp()
       .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
       
-    interaction.channel.send({embeds: [embed]});
+    await interaction.reply({embeds: [embed]});
   }
 }

@@ -16,6 +16,6 @@ module.exports = {
   run: async (client, interaction) => {
     const args = interaction.options.getString('texto');
     const sayinteraction = args;
-    interaction.channel.send(sayinteraction);
+    await interaction.reply(sayinteraction);
   }
 }

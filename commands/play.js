@@ -3,7 +3,7 @@ const { EmbedBuilder } = require("discord.js");
 
 module.exports = {
     name: 'play',
-    description: 'Tocar musicas',
+    description: 'Tocar musicas e playlist!',
     type: discord.ApplicationCommandType.ChatInput,
     options: [
         {
@@ -19,16 +19,19 @@ module.exports = {
         
         if(!interaction.member.voice.channel){
             const embed = new EmbedBuilder()
-            .setTitle(`Entre em um canal de voz!!`)
-            .setThumbnail('https://3.bp.blogspot.com/-Ht6GDhPLkXM/WrfC848CXUI/AAAAAAAASeU/ElCzKraOlREPSOQcuTJ71wS4qICb0smOwCLcBGAs/s640/Kyoko.gif')
-            .setColor("#eb1616")
-            .setDescription(`Ué quer que eu toque para quem?`)
-            return interaction.channel.send({embeds: [embed]});
+                .setTitle(`Entre em um canal de voz!!`)
+                .setThumbnail('https://3.bp.blogspot.com/-Ht6GDhPLkXM/WrfC848CXUI/AAAAAAAASeU/ElCzKraOlREPSOQcuTJ71wS4qICb0smOwCLcBGAs/s640/Kyoko.gif')
+                .setColor("#eb1616")
+                .setDescription(`Ué quer que eu toque para quem?`)
+
+            return await interaction.reply({embeds: [embed]});
         }
+        const m = await interaction.reply('🔎 Pesquisando...');
         client.distube.play(interaction.member.voice.channel, args.toString(), {
             member: interaction.member,
             textChannel: interaction.channel,
             interaction
-        })
+        });
+        m.edit('Ta ai! 😎');
     }
 }
