@@ -1,5 +1,6 @@
 const discord = require('discord.js');
 const { EmbedBuilder } = require("discord.js");
+const { emoji } = require('../config/config.json')
 
 module.exports = {
     name: 'play',
@@ -26,12 +27,17 @@ module.exports = {
 
             return await interaction.reply({embeds: [embed]});
         }
-        const m = await interaction.reply('🔎 Pesquisando...');
-        client.distube.play(interaction.member.voice.channel, args.toString(), {
-            member: interaction.member,
-            textChannel: interaction.channel,
-            interaction
-        });
-        m.edit('Ta ai! 😎');
+        let m;
+        try {
+            m = await interaction.reply('🔎 Pesquisando...');
+            await client.distube.play(interaction.member.voice.channel, args.toString(), {
+                member: interaction.member,
+                textChannel: interaction.channel,
+                interaction
+            });
+            m.edit('Ta ai! 😎');
+        } catch (err) {
+            m.edit(`${emoji.error} Não tenho permissão para entrar neste canal de voz!`);
+        }
     }
 }
