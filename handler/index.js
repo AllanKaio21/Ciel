@@ -13,8 +13,14 @@ module.exports = async (client) => {
       SlashsArray.push(files)
     });
   });
+  // Inicialiar comandos das guildas com o bot
   client.on("ready", async () => {
     client.guilds.cache.forEach(guild => guild.commands.set(SlashsArray))
+  });
+  // Carregar comandos para nova guilda
+  client.on("guildCreate", async (guild) => {
+    console.log(`Entrei na guilda: ${guild.name}`);
+    guild.commands.set(SlashsArray);
   });
 };
 
