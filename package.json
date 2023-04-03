@@ -1,5 +1,5 @@
 {
-  "name": "botmusicv2",
+  "name": "Ciel",
   "version": "1.0.0",
   "description": "Sou o ciel, um bot de musica desenvolvido em discord.js!",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "AllanKaio21",
   "license": "ISC",
   "dependencies": {
     "@discordjs/opus": "^0.8.0",

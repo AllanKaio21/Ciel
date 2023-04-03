@@ -26,9 +26,8 @@ module.exports = {
       return await interaction.reply({embeds: [embed]});
     }
 
-    if(isNaN(args[0])) return interaction.reply("Isto não é uma valor valido!");
-    const vol = parseInt(args[0])
-    if(args[0] > 100||args[0] < 0) return interaction.reply("Volume precisa ser entre 0 e 100!");
+    const vol = args
+    if(vol > 100 || vol < 0) return await interaction.reply("Volume precisa ser entre 0 e 100!");
     queue.setVolume(vol)
     let volume = '|';
     const embed = new EmbedBuilder()
@@ -36,7 +35,7 @@ module.exports = {
       .setColor("#eb1616")
       .setDescription(`Volume Alterado!`)
       .addFields(
-          { name: `Volume:`,inline: true, value: `${volume.repeat(args[0])} ${args[0]}%`, inline: false },
+          { name: `Volume:`,inline: true, value: `${volume.repeat(vol)} ${vol}%`, inline: false },
       )
       .setTimestamp()
       .setFooter({ text: '🎶', iconURL: `${client.user.displayAvatarURL({format: "png"})}` });
