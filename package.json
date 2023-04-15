@@ -18,6 +18,7 @@
     "discord-music-player": "^9.1.1",
     "discord.js": "^14.7.1",
     "distube": "^4.0.4",
-    "opusscript": "^0.0.8"
+    "opusscript": "^0.0.8",
+    "spotify-get": "^1.1.10"
   }
 }
