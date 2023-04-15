@@ -46,3 +46,8 @@ Bot de musica Ciel, desenvolvido em discord.js.
 
 - Inicialiar comandos das guildas com o bot e quando entrar em novas guildas.
 + index.js
+
+# Spotify
+
+- Acessa o spotify para pegar link de uma faixa de música ou album.
++ index.js
