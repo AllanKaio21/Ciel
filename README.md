@@ -1,6 +1,11 @@
 # Ciel
 Bot de musica Ciel, desenvolvido em discord.js.
 
+## Inicializar
+
+``+ docker build . -t app ``
+``docker run app``
+
 ## Diretorios/Arquivos ##
 
 # ./
