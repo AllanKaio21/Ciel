@@ -28,40 +28,40 @@ docker run ciel
 
 Comandos gerais do bot.
 ```
-play.js
+/play
 ```
 ```
-skip.js
+/skip
 ```
 ```
-pause.js
+/pause
 ```
 ```
-stop.js
+/stop
 ```
 ```
-stoploop.js
+/stoploop
 ```
 ```
-invite.js
+/invite
 ```
 ```
-help.js
+/help
 ```
 ```
-resume.js
+/resume
 ```
 ```
-say.js
+/say
 ```
 ```
-ping.js
+/ping
 ```
 ```
-bug.js
+/bug
 ```
 ```
-volume.js
+/volume
 ```
 
 # Config
