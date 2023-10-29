@@ -1,19 +1,21 @@
 # Ciel
-Bot de musica Ciel, desenvolvido em discord.js.
+Bot de musica Ciel, desenvolvido em Node js.
++ Bibliotecas usadas: `discord.js, distube, spotify-get.`
 
-## Inicializar
+# Inicializar
 + Adicione seus tokens em: ``config/config.json``
 + Execute os comando no diretorio: ``Ciel``
+  
 + Crie a imagem docker do bot
 ```
 docker build . -t ciel
 ```
-+ Coloque a imgem para executar
++ Coloque a imagem para executar
 ```
 docker run ciel
 ```
 
-## Diretorios/Arquivos ##
+# Diretorios/Arquivos
 
 # ./
 
@@ -24,19 +26,43 @@ docker run ciel
 
 # Commands
 
-- Comandos gerais do bot.
-+ play.js
-+ skip.js
-+ pause.js
-+ stop.js
-+ stoploop.js
-+ invite.js
-+ help.js
-+ resume.js
-+ say.js
-+ ping.js
-+ bug.js
-+ volume.js
+Comandos gerais do bot.
+```
+play.js
+```
+```
+skip.js
+```
+```
+pause.js
+```
+```
+stop.js
+```
+```
+stoploop.js
+```
+```
+invite.js
+```
+```
+help.js
+```
+```
+resume.js
+```
+```
+say.js
+```
+```
+ping.js
+```
+```
+bug.js
+```
+```
+volume.js
+```
 
 # Config
 
@@ -47,7 +73,8 @@ docker run ciel
 
 # Events
 
-- Controle de todos os eventos como inicialização, interação do usuario, player de musica e deploy de comandos para guildas.
+Controle de todos os eventos como inicialização, interação do usuario, player de musica e deploy de comandos para guildas.
+
 + cooldown.js
 + deploy-commands.js
 + interaction.js
