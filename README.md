@@ -3,9 +3,13 @@ Bot de musica Ciel, desenvolvido em discord.js.
 
 ## Inicializar
 + Adicione seus tokens em: ``config/config.json``
-+ Execute os comando no diretorio ``Ciel``
++ Execute os comando no diretorio: ``Ciel``
++ Crie a imagem docker do bot
 ```
 docker build . -t ciel
+```
++ Coloque a imgem para executar
+```
 docker run ciel
 ```
 
