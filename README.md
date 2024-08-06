@@ -2,7 +2,13 @@
 Bot de musica Ciel, desenvolvido em Node js.
 + Bibliotecas usadas: `discord.js, distube, spotify-get.`
 
-# Inicializar
+# Inicializar com imagem dockerhub
++ Acesse o link abaixo e siga os passos para executar o bot de forma simples com a imagem pronta.
+```
+https://hub.docker.com/r/allankaio276/ciel
+```
+
+# Inicializar com dockerfile
 + Adicione seus tokens em: ``config/config.json``
 + Execute os comando no diretorio: ``Ciel``
   
