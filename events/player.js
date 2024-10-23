@@ -52,6 +52,7 @@ client.distube
     await queue.textChannel.send({ embeds: [embed] });
   })
   .on('error', (channel, e) => {
+    console.log(e)
     if (channel) channel.send(`${client.emotes.error} | Deu um BO feio aqui... Me lasquei!`)
     else console.error(e)
   })

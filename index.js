@@ -13,14 +13,8 @@ client.slashCommands = new Discord.Collection()
 require('./handler')(client)
 
 client.distube = new DisTube(client, {
-  leaveOnStop: false,
-  emitNewSongOnly: true,
-  emitAddSongWhenCreatingQueue: false,
-  emitAddListWhenCreatingQueue: false,
   plugins: [
     new SpotifyPlugin({
-      parallel: true,
-      emitEventsAfterFetching: false,
       api: {
         clientId: spyId,
         clientSecret: spySecret,
@@ -50,3 +44,14 @@ player.run(client);
 
 // Initialize
 client.login(TOKEN);
+
+// "@discordjs/opus": "^0.8.0",
+//     "@distube/soundcloud": "^1.3.0",
+//     "@distube/spotify": "^1.5.1",
+//     "@distube/yt-dlp": "^1.1.3",
+//     "@distube/ytsr": "^2.0.0",
+//     "discord.js": "^14.7.1",
+//     "distube": "^4.0.4",
+//     "ffmpeg-static": "^5.2.0",
+//     "opusscript": "^0.0.8",
+//     "spotify-get": "^1.1.10"
