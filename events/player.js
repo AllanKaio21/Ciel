@@ -53,8 +53,8 @@ client.distube
   })
   .on('error', (channel, e) => {
     console.log(e)
-    if (channel) channel.send(`${client.emotes.error} | Deu um BO feio aqui... Me lasquei!`)
-    else console.error(e)
+    // if (channel) channel.send(`${client.emotes.error} | Deu um BO feio aqui... Me lasquei!`)
+    // else console.log(e)
   })
   .on('empty', channel => {
     console.log("Desconectado de uma call!")
@@ -72,4 +72,7 @@ client.distube
 
     await queue.textChannel.send({ embeds: [embed] });
   })
+  .on('debug', (message) => {
+    console.log('[DisTube Debug]', message);
+  });
 }

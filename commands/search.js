@@ -50,6 +50,7 @@ module.exports = {
             });
             m.edit('Ta ai! 😎');
         } catch (err) {
+            console.log(err)
             m.edit(`${emoji.error} Não tenho permissão para entrar neste canal de voz!`);
         }
         

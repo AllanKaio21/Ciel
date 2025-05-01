@@ -11,12 +11,13 @@
   "author": "AllanKaio21",
   "license": "ISC",
   "dependencies": {
-    "@distube/soundcloud": "^2.0.3",
+    "@distube/soundcloud": "^2.0.4",
     "@distube/spotify": "^2.0.2",
+    "@distube/youtube": "^1.0.4",
     "@distube/yt-dlp": "^2.0.1",
     "@distube/ytsr": "^2.0.4",
-    "discord.js": "^14.16.3",
-    "distube": "^5.0.2",
+    "discord.js": "^14.19.1",
+    "distube": "^5.0.7",
     "ffmpeg-static": "^5.2.0",
     "opusscript": "^0.1.1",
     "spotify-get": "^1.1.10"
