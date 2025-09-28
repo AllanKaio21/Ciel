@@ -3,7 +3,7 @@ const config = require('../config/config.json');
 
 module.exports.run = async (client) => {
   const time = 5000;
-  client.on("ready", () => {
+  client.on("clientReady", () => {
     let types = [
       ActivityType.Listening,
       ActivityType.Competing,

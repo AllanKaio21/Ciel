@@ -22,8 +22,17 @@ client.distube = new DisTube(client, {
       },
     }),
     new SoundCloudPlugin(),
-    new YouTubePlugin()
-  ]
+    new YouTubePlugin(
+      {
+        ytdlOptions: {
+          quality: 'highestaudio',
+          filter: 'audioonly',
+          force_ipv4: true,
+        }
+      }
+    )
+  ],
+  nsfw: true
 })
 
 // Import files
